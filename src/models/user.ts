@@ -7,7 +7,7 @@ export type User = {
     username: string,
     password: string,
     cash?: number,
-    id?: number
+    id: number
 }
 
 export class Users {

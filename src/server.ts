@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import verifyAuthToken from "./middlewares/authentcation";
 import { UserStock } from "./models/stocks";
 import jwt from 'jsonwebtoken';
-import { Users } from "./models/user";
+import { User, Users } from "./models/user";
 
 dotenv.config()
 const SECRET_TOKEN = process.env.SECRET_TOKEN
@@ -21,7 +21,7 @@ app.listen(3000, async ()=> {
 })
 
 
-app.post('/buy', verifyAuthToken ,async (req: Request, res: Response) => {
+app.post('/buy', verifyAuthToken ,async (req: Request, res: Response, user: User | any) => {
     const symbol = req.body.symbol as string
     const shares = (req.body.shares as unknown) as number
     const user_id = (req.body.user_id as unknown) as BigInt
@@ -35,7 +35,7 @@ app.post('/buy', verifyAuthToken ,async (req: Request, res: Response) => {
     }
 })
 
-app.post('/sell', verifyAuthToken, async (req: Request, res: Response) => {
+app.post('/sell', verifyAuthToken, async (req: Request, res: Response, user: User | any) => {
     const symbol = req.body.symbol as string
     const shares = (req.body.shares as unknown) as number
     const user_id = (req.body.user_id as unknown) as BigInt
@@ -51,8 +51,8 @@ app.post('/signup', async (req: Request, res: Response) => {
     const username = req.body.username as string
     const password = req.body.password as string
     try {
-        const newUser = await user.Create({username: username, password: password});
-        const token = jwt.sign({user: newUser}, SECRET_TOKEN as string);
+        const newUser = await user.Create({username: username, password: password} as User);
+        const token = jwt.sign({userID: newUser.id, userName: newUser.username}, SECRET_TOKEN as string);
         res.json(token);
     } catch (error) {
         res.sendStatus(404);

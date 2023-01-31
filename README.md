@@ -1,5 +1,5 @@
 # Finance Backend Project
-A virtual API for a storeFront Where users can buy and sell shares form different stocks. Stocks data are fetched from [IEX Cloud API](https://iexcloud.io/docs/api/).
+A virtual API for a stocks trading app Where users can buy and sell shares form different stocks. Stocks data are fetched from [IEX Cloud API](https://iexcloud.io/docs/api/).
 ## Getting Started
 This readme will help you run the application locally.
 
@@ -21,7 +21,6 @@ You need to download all the dependencies the app need using this command.
 - Create database to connect to the application.
 - update the .env file with your local environment variable
 - make a migration. `db-migrate up`
-- test the application. `npm test`
 - run the application. `npm start`
 
 #### Database Creation

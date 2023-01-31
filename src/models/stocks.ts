@@ -46,7 +46,7 @@ export class UserStock {
             throw new Error(`Could not buy stock ${symbol}`);
             
         } finally {
-            await conn.release();
+            conn.release();
         }  
     }
 
