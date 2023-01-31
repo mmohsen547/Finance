@@ -1,0 +1,6 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    passowrd_hash VARCHAR(255) NOT NULL,
+    Cash NUMERIC DEFAULT 100000.00    
+)
