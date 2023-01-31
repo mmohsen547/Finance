@@ -21,7 +21,6 @@ You need to download all the dependencies the app need using this command.
 - Create database to connect to the application.
 - update the .env file with your local environment variable
 - make a migration. `db-migrate up`
-- test the application. `npm test`
 - run the application. `npm start`
 
 #### Database Creation
